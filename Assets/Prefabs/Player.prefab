@@ -1082,11 +1082,15 @@ HingeJoint:
   m_ConnectedMassScale: 1
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> parent of 4fe03a8... Merge branch 'master' of https://github.com/WhiteOlivierus/Seal-the-deal
 --- !u!59 &59419522319850428
 HingeJoint:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
+<<<<<<< HEAD
 =======
 --- !u!59 &59419522319850428
 HingeJoint:
@@ -1134,6 +1138,41 @@ HingeJoint:
 --- !u!59 &59539020799078306
 HingeJoint:
   m_ObjectHideFlags: 1
+=======
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1586736289769438}
+  m_ConnectedBody: {fileID: 54276416781011800}
+  m_Anchor: {x: 0, y: 0, z: 0}
+  m_Axis: {x: 1, y: 0, z: 0}
+  m_AutoConfigureConnectedAnchor: 1
+  m_ConnectedAnchor: {x: 0, y: -1.2340999, z: 0}
+  m_UseSpring: 0
+  m_Spring:
+    spring: 0
+    damper: 0
+    targetPosition: 0
+  m_UseMotor: 0
+  m_Motor:
+    targetVelocity: 0
+    force: 0
+    freeSpin: 0
+  m_UseLimits: 1
+  m_Limits:
+    min: -90
+    max: 60
+    bounciness: 0
+    bounceMinVelocity: 0.2
+    contactDistance: 0
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_EnableCollision: 1
+  m_EnablePreprocessing: 1
+  m_MassScale: 1
+  m_ConnectedMassScale: 1
+--- !u!59 &59539020799078306
+HingeJoint:
+  m_ObjectHideFlags: 1
+>>>>>>> parent of 4fe03a8... Merge branch 'master' of https://github.com/WhiteOlivierus/Seal-the-deal
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1503731692220990}
@@ -1407,6 +1446,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   verticalSpeed: 200
 <<<<<<< HEAD
+<<<<<<< HEAD
   horizontalSpeed: 200
 <<<<<<< HEAD
   jumpPower: 2000
@@ -1417,6 +1457,10 @@ MonoBehaviour:
 =======
   jumpPower: 200
 >>>>>>> parent of 7c24fa2... Prefab controller
+=======
+  horizontalSpeed: 10000
+  jumpPower: 10000
+>>>>>>> parent of 4fe03a8... Merge branch 'master' of https://github.com/WhiteOlivierus/Seal-the-deal
   jumpDir: {x: 0, y: 1, z: 1}
   rbPivot: {fileID: 54276416781011800}
   fm: 0

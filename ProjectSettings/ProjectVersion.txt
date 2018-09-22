@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 m_EditorVersion: 2018.1.9f2
 =======
 m_EditorVersion: 2018.2.7f1
@@ -7,3 +8,6 @@ m_EditorVersion: 2018.2.7f1
 =======
 m_EditorVersion: 2018.1.6f1
 >>>>>>> parent of a9fa86d... Controller land done
+=======
+m_EditorVersion: 2018.1.9f2
+>>>>>>> parent of 4fe03a8... Merge branch 'master' of https://github.com/WhiteOlivierus/Seal-the-deal
