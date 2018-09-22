@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: RealWaterMaterialDontUseTheOtherWaterMaterials
+  m_Shader: {fileID: 4800000, guid: aae5722023f1c25498dbae159c823e88, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 684efb4cce1361a4e9786e54bfb06523, type: 3}
+        m_Scale: {x: 3, y: 3}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _FadeLength: 2.58
+    - _HighlightThresholdMax: 50
+    m_Colors:
+    - _Color: {r: 0, g: 0, b: 0, a: 0.59607846}
+    - _GlowColor: {r: 0.514151, g: 0.75109214, b: 1, a: 0.32156864}
+    - _HighlightColor: {r: 0, g: 0.108016185, b: 0.6320754, a: 0.5}
+    - _RegularColor: {r: 0.4978195, g: 0.875994, b: 0.9339623, a: 0.5}
