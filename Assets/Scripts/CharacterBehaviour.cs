@@ -3,9 +3,12 @@
 public class CharacterBehaviour : MonoBehaviour {
 
 
-	public float verticalSpeed;
-	public float horizontalSpeed;
+	public float verticalSpeedLand;
+	public float horizontalSpeedLand;
+	public float verticalSpeedWater;
+	public float horizontalSpeedWater;
 	public float jumpPower;
+	public float landSideForce;
 	public Vector3 jumpDir;
 	public Rigidbody rbLeft;
 	public Rigidbody rbRight;
@@ -44,6 +47,9 @@ public class CharacterBehaviour : MonoBehaviour {
 		}
 
 
+		BodySlam ();
+
+
 		Debug.DrawLine (transform.position, transform.position - Vector3.up, Color.red);
 
 
@@ -54,13 +60,13 @@ public class CharacterBehaviour : MonoBehaviour {
 
 
 		RaycastHit hit;
-		if (Physics.Raycast (transform.position, transform.position - Vector3.up, out hit, 10f, 8)) {
+		if (Physics.Raycast (transform.position, -Vector3.up, out hit, Mathf.Infinity, 1 << 8)) {
 
 
 			print (hit.collider.name);
 
 
-			if (hit.collider.name == "floor") {
+			if (hit.collider.gameObject.name == "floor") {
 				return 0;
 			} else {
 				return 1;
@@ -73,8 +79,8 @@ public class CharacterBehaviour : MonoBehaviour {
 
 
 	private void LandMode () {
-		float rotateBodyVertical = Input.GetAxis ("Vertical") * verticalSpeed;
-		float rotateBodyHorizontal = Input.GetAxis ("Horizontal") * horizontalSpeed;
+		float rotateBodyVertical = Input.GetAxis ("Vertical") * verticalSpeedLand;
+		float rotateBodyHorizontal = Input.GetAxis ("Horizontal") * horizontalSpeedLand;
 
 
 		if (Input.GetAxis ("Horizontal") >= 0.1f ||
@@ -90,8 +96,7 @@ public class CharacterBehaviour : MonoBehaviour {
 			} else {
 				rbRight.AddRelativeTorque (new Vector3 (0f, rotateBodyHorizontal, 0f), fm);
 			}
-
-
+			rb.AddRelativeForce ((transform.up + new Vector3 (rotateBodyHorizontal, 0f, 0f)) * landSideForce);
 		}
 
 
@@ -106,8 +111,8 @@ public class CharacterBehaviour : MonoBehaviour {
 
 
 	private void WaterMode () {
-		float moveBodyVertical = Input.GetAxis ("Vertical") * verticalSpeed;
-		float rotateBodyHorizontal = Input.GetAxis ("Horizontal") * horizontalSpeed;
+		float moveBodyVertical = Input.GetAxis ("Vertical") * verticalSpeedWater;
+		float rotateBodyHorizontal = Input.GetAxis ("Horizontal") * horizontalSpeedWater;
 
 
 		if (Input.GetAxis ("Horizontal") >= 0.1f ||
@@ -131,5 +136,10 @@ public class CharacterBehaviour : MonoBehaviour {
 
 
 		}
+	}
+
+
+	private void BodySlam () {
+
 	}
 }
