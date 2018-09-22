@@ -13,13 +13,22 @@ public class PointSystem : MonoBehaviour
 
     public int pointCounter = 0;
     public int pointAdder= 1;
-    public int zoneBonus = 2; 
+    public int zoneBonus = 2;
+    public int pointMax = 100; 
 
-    public float zoneDistance;
-    public float zoneBorder;
-    public float waterDistance; 
+    public float playerDistance;
+    public float bonezoneBorder;
+    public float landBorder; 
+    public float waterDistance;
 
     public Transform BoneZone;
+    //public Transform LandZone;
+    public Transform playerPos;
+    public Transform waterZone;
+
+    public Image currentPoints;
+
+    public Color overTimeColor; 
 
     public Text pointText;
 
@@ -32,27 +41,50 @@ public class PointSystem : MonoBehaviour
 
     void FixedUpdate()
     {
-        zoneDistance = Vector3.Distance(BoneZone.position, transform.position);
+        playerDistance = Vector3.Distance(BoneZone.position, transform.position);
+        waterDistance = Vector3.Distance(waterZone.position, transform.position); 
+
+        //playerDistance = Vector3.Distance(playerPos.position, transform.position);
+        //bonezoneBorder = Vector3.Distance(playerPos.position, transform.position);
+        //landBorder = Vector3.Distance(playerPos.position, transform.position);
         pointText.text = ("" + pointCounter);
 
         //checks zone 
 
-
-        if (inWater != true)
+        if ( waterDistance <= 5) // in water
         {
-            if (zoneDistance > zoneBorder)
+            inWater = true;
+            onLand = false;
+            boneZone = false;
+        }
+
+        else
+        {
+            inWater = false; 
+        }
+
+        if (inWater != true) //not in water
+        {
+            if (playerDistance > bonezoneBorder) //on land
             {
                 boneZone = false;
                 onLand = true;
             }
 
 
-            if (zoneDistance < zoneBorder)
+            if (playerDistance < bonezoneBorder) //in red zone
             {
                 boneZone = true;
                 onLand = false;
             }
         }   
+
+        if (pointCounter >= pointMax)
+        {
+            pointCounter = pointMax;
+            currentPoints.color = overTimeColor; 
+            StopCoroutine("NormalePointTime");
+        }
     }
 
 
@@ -65,15 +97,22 @@ public class PointSystem : MonoBehaviour
             if (onLand == true)
             {
                 pointCounter += pointAdder;
+                UpdatePointTotal();
             }
 
             // add red zone bonus 
             if (boneZone == true)
             {
-                pointCounter += pointAdder + zoneBonus; 
+                pointCounter += pointAdder + zoneBonus;
+                UpdatePointTotal();
             }
         }
-    }    
+    }
+
+    private void UpdatePointTotal()
+    {
+        currentPoints.fillAmount  = (float)pointCounter / (float)pointMax; 
+    }
 }
 
 
