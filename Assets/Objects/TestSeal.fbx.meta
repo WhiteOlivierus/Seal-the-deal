@@ -1,55 +1,42 @@
 fileFormatVersion: 2
-guid: 2eab5f21183e1de47b47f88af83931ef
+guid: ccb34b0eb1cbdb743a1de0e4bff79ee1
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: Cube
-    100002: Cube_001
-    100004: Cube_002
-    100006: Cube_003
-    100008: Cube_004
-    100010: Cylinder
-    100012: //RootNode
-    400000: Cube
-    400002: Cube_001
-    400004: Cube_002
-    400006: Cube_003
-    400008: Cube_004
-    400010: Cylinder
-    400012: //RootNode
-    2100000: Material_005
-    2100002: Material_002
-    2100004: Material_004
-    2100006: Material_003
-    2100008: Material_001
-    2100010: Material
-    2300000: Cube
-    2300002: Cube_001
-    2300004: Cube_002
-    2300006: Cube_003
-    2300008: Cube_004
-    2300010: Cylinder
-    3300000: Cube
-    3300002: Cube_001
-    3300004: Cube_002
-    3300006: Cube_003
-    3300008: Cube_004
-    3300010: Cylinder
-    4300000: Cylinder
-    4300002: Cube_004
-    4300004: Cube_003
-    4300006: Cube_002
-    4300008: Cube_001
-    4300010: Cube
-    6400000: Cube
-    6400002: Cube_001
-    6400004: Cube_002
-    6400006: Cube_003
-    6400008: Cube_004
-    6400010: Cylinder
-    7400000: Default Take
+    100000: Armature
+    100002: Bone
+    100004: Bone.001
+    100006: Bone.001_end
+    100008: Bone.002
+    100010: Bone.003
+    100012: Bone.003_end
+    100014: Bone.004
+    100016: Bone.004_end
+    100018: Bone.005
+    100020: Bone.006
+    100022: Bone.007
+    100024: Bone.007_end
+    100026: Seal
+    100028: //RootNode
+    400000: Armature
+    400002: Bone
+    400004: Bone.001
+    400006: Bone.001_end
+    400008: Bone.002
+    400010: Bone.003
+    400012: Bone.003_end
+    400014: Bone.004
+    400016: Bone.004_end
+    400018: Bone.005
+    400020: Bone.006
+    400022: Bone.007
+    400024: Bone.007_end
+    400026: Seal
+    400028: //RootNode
+    2100000: lambert1
+    4300000: Seal
     9500000: //RootNode
-    2186277476908879412: ImportLogs
+    13700000: Seal
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -83,25 +70,25 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 1
+    addColliders: 0
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
-    swapUVChannels: 1
-    generateSecondaryUV: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
-    preserveHierarchy: 1
+    preserveHierarchy: 0
     indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 1
+    previousCalculatedGlobalScale: 0.01
     hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
