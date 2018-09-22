@@ -14,7 +14,7 @@ public class CharacterBehaviour : MonoBehaviour {
 
 	private Rigidbody rb;
 	private Vector3 rotation;
-	private int state = 0;
+	public int state = 0;
 
 
 	void Start () {
