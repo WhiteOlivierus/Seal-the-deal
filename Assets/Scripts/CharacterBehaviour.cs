@@ -1,14 +1,15 @@
 ﻿using UnityEngine;
-using UnityEngine.Networking;
 
-public class CharacterBehaviour : NetworkBehaviour {
+public class CharacterBehaviour : MonoBehaviour {
 
 
 	public float verticalSpeedLand;
 	public float horizontalSpeedLand;
-	public float landTurnForce;
+	public float turnForceLand;
+	public float maxVelocityLand;
 	public float verticalSpeedWater;
 	public float horizontalSpeedWater;
+	public float maxVelocityWater;
 	public float jumpPower;
 	public Vector3 jumpDir;
 	public Rigidbody rbLeft;
@@ -40,9 +41,13 @@ public class CharacterBehaviour : NetworkBehaviour {
 		switch (state) {
 			case 0:
 				LandMode ();
+				rb.velocity = Vector3.ClampMagnitude (rb.velocity, maxVelocityLand);
+				rbLeft.velocity = Vector3.ClampMagnitude (rbLeft.velocity, turnForceLand);
+				rbRight.velocity = Vector3.ClampMagnitude (rbRight.velocity, turnForceLand);
 				break;
 			case 1:
 				WaterMode ();
+				rb.velocity = Vector3.ClampMagnitude (rb.velocity, maxVelocityWater);
 				break;
 			default:
 				break;
@@ -52,7 +57,12 @@ public class CharacterBehaviour : NetworkBehaviour {
 		BodySlam ();
 
 
-		Debug.DrawLine (transform.position, transform.position - Vector3.up, Color.red);
+		rb.maxAngularVelocity = turnForceLand;
+		rbLeft.maxAngularVelocity = turnForceLand;
+		rbRight.maxAngularVelocity = turnForceLand;
+
+
+		print (rb.velocity.magnitude);
 
 
 	}
@@ -98,14 +108,15 @@ public class CharacterBehaviour : NetworkBehaviour {
 			} else {
 				rbRight.AddRelativeTorque (new Vector3 (0f, rotateBodyHorizontal, 0f), fm);
 			}
-			rb.AddRelativeForce ((transform.up + new Vector3 (rotateBodyHorizontal, 0f, 0f)) * landTurnForce);
+			rb.AddRelativeForce ((transform.up + new Vector3 (rotateBodyHorizontal, 0f, 0f)) * turnForceLand);
+
 		}
 
 
 		if (Input.GetButtonDown ("Jump")) {
 
 
-			rb.AddRelativeForce (jumpDir * jumpPower);
+			rb.AddRelativeForce (jumpDir * jumpPower, ForceMode.Acceleration);
 
 
 		}
@@ -144,9 +155,8 @@ public class CharacterBehaviour : NetworkBehaviour {
 	private void BodySlam () {
 		if (Input.GetButton ("Fire1") && chargeBodySlam <= 30) {
 			chargeBodySlam++;
-			print (chargeBodySlam);
 		} else if (Input.GetButtonUp ("Fire1")) {
-			rb.AddRelativeForce (((transform.forward + transform.up) * jumpPower) * chargeBodySlam / 4);
+			rb.AddRelativeForce (((transform.forward + transform.up) * jumpPower) * chargeBodySlam);
 			chargeBodySlam = 0;
 		}
 	}
