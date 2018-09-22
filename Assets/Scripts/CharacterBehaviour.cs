@@ -7,8 +7,7 @@ public class CharacterBehaviour : MonoBehaviour {
 	public float horizontalSpeed;
 	public float jumpPower;
 	public Vector3 jumpDir;
-	public Rigidbody rbLeft;
-	public Rigidbody rbRight;
+	public Rigidbody rbPivot;
 	public ForceMode fm;
 
 
@@ -84,12 +83,8 @@ public class CharacterBehaviour : MonoBehaviour {
 
 
 			Quaternion r = transform.localRotation;
-			rb.AddRelativeTorque (new Vector3 (rotateBodyVertical, rotateBodyHorizontal, 0f), fm);
-			if (rotateBodyHorizontal < 0) {
-				rbLeft.AddRelativeTorque (new Vector3 (0f, rotateBodyHorizontal, 0f), fm);
-			} else {
-				rbRight.AddRelativeTorque (new Vector3 (0f, rotateBodyHorizontal, 0f), fm);
-			}
+			rb.AddRelativeTorque (new Vector3 (rotateBodyVertical, 0f, 0f), fm);
+			rbPivot.AddRelativeTorque (new Vector3 (0f, rotateBodyHorizontal, 0f), fm);
 
 
 		}
