@@ -3,8 +3,10 @@
 public class CharacterBehaviour : MonoBehaviour {
 
 
-	public float verticalSpeed = 20f;
-	public float horizontalSpeed = 20f;
+	public float verticalSpeed;
+	public float horizontalSpeed;
+	public float jumpPower;
+	public Rigidbody rbPivot;
 
 
 	private Rigidbody rb;
@@ -12,7 +14,11 @@ public class CharacterBehaviour : MonoBehaviour {
 
 
 	void Start () {
+
+
 		rb = GetComponent<Rigidbody> ();
+
+
 	}
 
 
@@ -30,7 +36,8 @@ public class CharacterBehaviour : MonoBehaviour {
 
 
 			Quaternion r = transform.localRotation;
-			rb.AddRelativeTorque (new Vector3 (rotateBodyVertical, rotateBodyHorizontal, 0f));
+			rb.AddRelativeTorque (new Vector3 (0f, 0f, rotateBodyVertical));
+			rbPivot.AddRelativeTorque (new Vector3 (0f, rotateBodyHorizontal, 0f));
 
 
 		}
@@ -39,12 +46,13 @@ public class CharacterBehaviour : MonoBehaviour {
 		if (Input.GetButtonDown ("Jump")) {
 
 
-			rb.AddRelativeForce (new Vector3 (0f, 2000f, -2000f));
+			rb.AddRelativeForce (new Vector3 (jumpPower, jumpPower, 0f));
 
 
 		}
 
 
 	}
+
 
 }
