@@ -26,7 +26,7 @@ Material:
     - _FadeLength: 2.58
     - _HighlightThresholdMax: 50
     m_Colors:
-    - _Color: {r: 0, g: 0, b: 0, a: 1}
-    - _GlowColor: {r: 0.5330188, g: 0.76116234, b: 1, a: 1}
+    - _Color: {r: 0, g: 0, b: 0, a: 0.5803922}
+    - _GlowColor: {r: 0.42973477, g: 0.6206445, b: 0.8207547, a: 1}
     - _HighlightColor: {r: 0, g: 0.108016185, b: 0.6320754, a: 0.5}
     - _RegularColor: {r: 0.4978195, g: 0.875994, b: 0.9339623, a: 0.5}
