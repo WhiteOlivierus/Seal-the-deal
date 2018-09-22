@@ -17,8 +17,6 @@ public class GateScript : MonoBehaviour {
         gatePos = pos;
         pos.y = downPosHeight;
         gateObject.transform.localPosition = pos;
-
-        OpenGate();
 	}
 
     public void OpenGate()
