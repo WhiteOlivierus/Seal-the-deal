@@ -1,14 +1,15 @@
 ﻿using UnityEngine;
+using UnityEngine.Networking;
 
-public class CharacterBehaviour : MonoBehaviour {
+public class CharacterBehaviour : NetworkBehaviour {
 
 
 	public float verticalSpeedLand;
 	public float horizontalSpeedLand;
+	public float landTurnForce;
 	public float verticalSpeedWater;
 	public float horizontalSpeedWater;
 	public float jumpPower;
-	public float landSideForce;
 	public Vector3 jumpDir;
 	public Rigidbody rbLeft;
 	public Rigidbody rbRight;
@@ -18,6 +19,7 @@ public class CharacterBehaviour : MonoBehaviour {
 	private Rigidbody rb;
 	private Vector3 rotation;
 	private int state = 0;
+	private int chargeBodySlam = 0;
 
 
 	void Start () {
@@ -96,7 +98,7 @@ public class CharacterBehaviour : MonoBehaviour {
 			} else {
 				rbRight.AddRelativeTorque (new Vector3 (0f, rotateBodyHorizontal, 0f), fm);
 			}
-			rb.AddRelativeForce ((transform.up + new Vector3 (rotateBodyHorizontal, 0f, 0f)) * landSideForce);
+			rb.AddRelativeForce ((transform.up + new Vector3 (rotateBodyHorizontal, 0f, 0f)) * landTurnForce);
 		}
 
 
@@ -140,6 +142,12 @@ public class CharacterBehaviour : MonoBehaviour {
 
 
 	private void BodySlam () {
-
+		if (Input.GetButton ("Fire1") && chargeBodySlam <= 30) {
+			chargeBodySlam++;
+			print (chargeBodySlam);
+		} else if (Input.GetButtonUp ("Fire1")) {
+			rb.AddRelativeForce (((transform.forward + transform.up) * jumpPower) * chargeBodySlam / 4);
+			chargeBodySlam = 0;
+		}
 	}
 }
