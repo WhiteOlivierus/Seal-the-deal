@@ -19,14 +19,14 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 684efb4cce1361a4e9786e54bfb06523, type: 3}
+        m_Texture: {fileID: 2800000, guid: 627dda74f46876648abb566523d2d99a, type: 3}
         m_Scale: {x: 3, y: 3}
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _FadeLength: 2.58
     - _HighlightThresholdMax: 50
     m_Colors:
-    - _Color: {r: 0, g: 0, b: 0, a: 0.9019608}
+    - _Color: {r: 0, g: 0, b: 0, a: 1}
     - _GlowColor: {r: 0.5330188, g: 0.76116234, b: 1, a: 1}
     - _HighlightColor: {r: 0, g: 0.108016185, b: 0.6320754, a: 0.5}
     - _RegularColor: {r: 0.4978195, g: 0.875994, b: 0.9339623, a: 0.5}
