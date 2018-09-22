@@ -1,16 +1,25 @@
 ﻿using UnityEngine;
+using UnityEngine.Networking;
 
-public class CharacterBehaviour : MonoBehaviour {
+public class CharacterBehaviour : NetworkBehaviour {
 
 
-	public float verticalSpeed;
-	public float horizontalSpeed;
+	public float verticalSpeedLand;
+	public float horizontalSpeedLand;
+	public float landTurnForce;
+	public float verticalSpeedWater;
+	public float horizontalSpeedWater;
 	public float jumpPower;
-	public Rigidbody rbPivot;
+	public Vector3 jumpDir;
+	public Rigidbody rbLeft;
+	public Rigidbody rbRight;
+	public ForceMode fm;
 
 
 	private Rigidbody rb;
 	private Vector3 rotation;
+	private int state = 0;
+	private int chargeBodySlam = 0;
 
 
 	void Start () {
@@ -25,8 +34,55 @@ public class CharacterBehaviour : MonoBehaviour {
 	void FixedUpdate () {
 
 
-		float rotateBodyVertical = -1 * Input.GetAxis ("Vertical") * verticalSpeed;
-		float rotateBodyHorizontal = Input.GetAxis ("Horizontal") * horizontalSpeed;
+		state = CheckState ();
+
+
+		switch (state) {
+			case 0:
+				LandMode ();
+				break;
+			case 1:
+				WaterMode ();
+				break;
+			default:
+				break;
+		}
+
+
+		BodySlam ();
+
+
+		Debug.DrawLine (transform.position, transform.position - Vector3.up, Color.red);
+
+
+	}
+
+
+	private int CheckState () {
+
+
+		RaycastHit hit;
+		if (Physics.Raycast (transform.position, -Vector3.up, out hit, Mathf.Infinity, 1 << 8)) {
+
+
+			print (hit.collider.name);
+
+
+			if (hit.collider.gameObject.name == "floor") {
+				return 0;
+			} else {
+				return 1;
+			}
+		}
+
+
+		return 0;
+	}
+
+
+	private void LandMode () {
+		float rotateBodyVertical = Input.GetAxis ("Vertical") * verticalSpeedLand;
+		float rotateBodyHorizontal = Input.GetAxis ("Horizontal") * horizontalSpeedLand;
 
 
 		if (Input.GetAxis ("Horizontal") >= 0.1f ||
@@ -36,8 +92,40 @@ public class CharacterBehaviour : MonoBehaviour {
 
 
 			Quaternion r = transform.localRotation;
-			rb.AddRelativeTorque (new Vector3 (0f, 0f, rotateBodyVertical));
-			rbPivot.AddRelativeTorque (new Vector3 (0f, rotateBodyHorizontal, 0f));
+			rb.AddRelativeTorque (new Vector3 (rotateBodyVertical, rotateBodyHorizontal, 0f), fm);
+			if (rotateBodyHorizontal < 0) {
+				rbLeft.AddRelativeTorque (new Vector3 (0f, rotateBodyHorizontal, 0f), fm);
+			} else {
+				rbRight.AddRelativeTorque (new Vector3 (0f, rotateBodyHorizontal, 0f), fm);
+			}
+			rb.AddRelativeForce ((transform.up + new Vector3 (rotateBodyHorizontal, 0f, 0f)) * landTurnForce);
+		}
+
+
+		if (Input.GetButtonDown ("Jump")) {
+
+
+			rb.AddRelativeForce (jumpDir * jumpPower);
+
+
+		}
+	}
+
+
+	private void WaterMode () {
+		float moveBodyVertical = Input.GetAxis ("Vertical") * verticalSpeedWater;
+		float rotateBodyHorizontal = Input.GetAxis ("Horizontal") * horizontalSpeedWater;
+
+
+		if (Input.GetAxis ("Horizontal") >= 0.1f ||
+			Input.GetAxis ("Horizontal") <= -0.1f ||
+			Input.GetAxis ("Vertical") >= 0.1f ||
+			Input.GetAxis ("Vertical") <= -0.1f) {
+
+
+			Quaternion r = transform.localRotation;
+			rb.AddRelativeForce (new Vector3 (0f, 0f, moveBodyVertical), fm);
+			rb.AddRelativeTorque (new Vector3 (0f, rotateBodyHorizontal, 0f), fm);
 
 
 		}
@@ -46,13 +134,20 @@ public class CharacterBehaviour : MonoBehaviour {
 		if (Input.GetButtonDown ("Jump")) {
 
 
-			rb.AddRelativeForce (new Vector3 (jumpPower, jumpPower, 0f));
+			rb.AddRelativeForce ((Vector3.forward + Vector3.up) * jumpPower);
 
 
 		}
-
-
 	}
 
 
+	private void BodySlam () {
+		if (Input.GetButton ("Fire1") && chargeBodySlam <= 30) {
+			chargeBodySlam++;
+			print (chargeBodySlam);
+		} else if (Input.GetButtonUp ("Fire1")) {
+			rb.AddRelativeForce (((transform.forward + transform.up) * jumpPower) * chargeBodySlam / 4);
+			chargeBodySlam = 0;
+		}
+	}
 }
