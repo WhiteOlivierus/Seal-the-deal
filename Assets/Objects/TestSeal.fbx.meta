@@ -18,6 +18,7 @@ ModelImporter:
     100024: Bone.007_end
     100026: Seal
     100028: //RootNode
+    100030: BaseSeal
     400000: Armature
     400002: Bone
     400004: Bone.001
@@ -33,10 +34,14 @@ ModelImporter:
     400024: Bone.007_end
     400026: Seal
     400028: //RootNode
+    400030: BaseSeal
     2100000: lambert1
+    2100002: Material
     4300000: Seal
+    4300002: BaseSeal
     9500000: //RootNode
     13700000: Seal
+    13700002: BaseSeal
   externalObjects: {}
   materials:
     importMaterials: 1
