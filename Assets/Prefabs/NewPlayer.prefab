@@ -480,7 +480,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4963833601894922}
   m_Layer: 0
-  m_Name: Player
+  m_Name: NewPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1733,23 +1733,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bed782d9a426b4c439384e7f9bc28d36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onLand: 1
-  boneZone: 0
-  inWater: 0
   pointCounter: 0
   pointAdder: 1
   zoneBonus: 2
   pointMax: 100
-  playerDistance: 0
-  bonezoneBorder: 0
-  landBorder: 0
-  waterDistance: 0
-  BoneZone: {fileID: 0}
-  playerPos: {fileID: 0}
-  waterZone: {fileID: 0}
   currentPoints: {fileID: 114913579226531300}
   overTimeColor: {r: 0.9433962, g: 0.11124954, b: 0.3440746, a: 0.92941177}
-  pointText: {fileID: 0}
 --- !u!114 &114895475367793806
 MonoBehaviour:
   m_ObjectHideFlags: 1

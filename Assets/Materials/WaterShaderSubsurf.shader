@@ -1,15 +1,16 @@
-﻿Shader "Intersection/Unlit"
+﻿Shader "Intersection/Unlit2"
 {
 	Properties
 	{
 		_MainTex("Albedo (RGB)", 2D) = "white" {}
 		_Color("Color", Color) = (0,0,0,0)
+		_WaterColor("Water Color", Color) = (0,0,0,0)
 		_GlowColor("Glow Color", Color) = (1, 1, 1, 1)
 		_FadeLength("Fade Length", Range(0, 500)) = 0.15
 	}
 		SubShader
 	{
-		Blend SrcAlpha One// SrcAlpha OneMinusSrcAlpha//
+		Blend SrcAlpha OneMinusSrcAlpha
 		ZWrite Off
 		Cull Off
 
@@ -54,6 +55,7 @@
 
 	sampler2D _CameraDepthTexture;
 	fixed4 _Color;
+	fixed4 _WaterColor;
 	fixed3 _GlowColor;
 	float _FadeLength;
 
@@ -70,10 +72,16 @@
 
 		fixed4 glowColor = fixed4(lerp(_Color.rgb, _GlowColor, pow(intersect, 4)), 1);
 
-		fixed4 col = tex2D(_MainTex, i.uv);// +glowColor;
+		fixed4 col = glowColor;
 		//col.a = tex2D(_MainTex, i.uv).a;
 		col.a *= _Color.a;
 		col.rgb += glowColor.rgb;
+		col.a = col.r+0.2;
+		if (col.a > 1)
+		{
+			col.a = 1;
+		}
+		col.rgb = _WaterColor;
 		return col;
 	}
 		ENDCG

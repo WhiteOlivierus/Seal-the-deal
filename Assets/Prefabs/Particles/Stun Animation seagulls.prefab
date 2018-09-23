@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 198554019002450310}
   - component: {fileID: 199419820355510528}
   m_Layer: 0
-  m_Name: Stun Animation Seagulls
+  m_Name: Stun Animation seagulls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
