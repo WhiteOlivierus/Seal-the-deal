@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4333981450436242}
   - component: {fileID: 33841016566517860}
   - component: {fileID: 23786330571543796}
-  - component: {fileID: 64314745004878106}
   m_Layer: 0
   m_Name: Plane (1)
   m_TagString: Untagged
@@ -39,7 +38,6 @@ GameObject:
   - component: {fileID: 4491567427108862}
   - component: {fileID: 33733134368201308}
   - component: {fileID: 23211530287380228}
-  - component: {fileID: 64568416036902304}
   - component: {fileID: 114527624014149324}
   m_Layer: 0
   m_Name: Water01
@@ -68,8 +66,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1682030943756342}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.6277, y: -3.3, z: -3.8081}
-  m_LocalScale: {x: 5.6465, y: 5.6465, z: 5.6465}
+  m_LocalPosition: {x: 0, y: 1.1, z: 0}
+  m_LocalScale: {x: 10, y: 5.6465, z: 10}
   m_Children:
   - {fileID: 4333981450436242}
   m_Father: {fileID: 0}
@@ -158,34 +156,6 @@ MeshFilter:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1661829724796978}
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!64 &64314745004878106
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1661829724796978}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!64 &64568416036902304
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1682030943756342}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!114 &114527624014149324
 MonoBehaviour:

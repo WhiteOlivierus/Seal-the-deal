@@ -5,10 +5,12 @@ public class NewCharacterBehaviour : MonoBehaviour {
 	public float moveSpeed;
 	public float rotateSpeed;
 	public int state = 0;
+	public float waveHeight, waveSpeed;
 	public Rigidbody rb;
 
 
 	private Vector3 boneZone;
+	private float xPingPong = 0;
 
 
 	void Start () {
@@ -22,6 +24,9 @@ public class NewCharacterBehaviour : MonoBehaviour {
 
 
 	void FixedUpdate () {
+		xPingPong = Mathf.Sin (Time.time * waveSpeed) * waveHeight;
+
+
 		state = CheckState ();
 
 
@@ -36,9 +41,6 @@ public class NewCharacterBehaviour : MonoBehaviour {
 			default:
 				break;
 		}
-
-
-		// print (Mathf.PingPong (Time.time, 1f));
 
 
 	}
@@ -69,17 +71,15 @@ public class NewCharacterBehaviour : MonoBehaviour {
 
 
 		if (Input.GetAxis ("Horizontal") < 0) {
-			// transform.position += Vector3.left * moveSpeed;
 			transform.Rotate (-Vector3.up * rotateSpeed);
 		} else if (Input.GetAxis ("Horizontal") > 0) {
-			// transform.position += -Vector3.left * moveSpeed;
 			transform.Rotate (Vector3.up * rotateSpeed);
 		} else if (Input.GetAxis ("Vertical") < 0) {
-			transform.Translate (new Vector3 (0f, Mathf.PingPong (Time.time, 1f), -1f) * moveSpeed);
-			// transform.Rotate (-Vector3.up * rotateSpeed);
+			transform.Translate (new Vector3 (0f, xPingPong, -1f) * moveSpeed);
+			print (new Vector3 (0f, xPingPong, -1f) * moveSpeed);
 		} else if (Input.GetAxis ("Vertical") > 0) {
-			transform.Translate (new Vector3 (0f, Mathf.PingPong (Time.time, 1f), 1f) * moveSpeed);
-			// transform.Rotate (Vector3.up * rotateSpeed);
+			transform.Translate (new Vector3 (0f, xPingPong, 1f) * moveSpeed);
+			print (new Vector3 (0f, xPingPong, 1f) * moveSpeed);
 		}
 
 
