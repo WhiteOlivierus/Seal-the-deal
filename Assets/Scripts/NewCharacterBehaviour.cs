@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.Networking;
 
-public class NewCharacterBehaviour : NetworkBehaviour {
+public class NewCharacterBehaviour : MonoBehaviour {
+
 
 	public float moveSpeed;
 	public float rotateSpeed;
@@ -9,30 +10,50 @@ public class NewCharacterBehaviour : NetworkBehaviour {
 	public float waveHeight, waveSpeed;
 	public Rigidbody rb;
 	public GameObject pc;
-
+    public float headButtCD = 1f;
+    public float bodySlamCD = 5f;
 
 	private Vector3 boneZone;
 	private float xPingPong = 0;
 
+    private float headButtTimer = 0;
+    private float bodySlamTimer = 0;
+    private bool isInBodySlam = false;
 
-	void Start () {
+    void Start () {
 
-
+        
 		boneZone = GameObject.Find ("BoneZone").transform.position;
 
 
 	}
 
 
-	void FixedUpdate () {
+	void FixedUpdate ()
+    {
+        if (headButtTimer > 0)
+        {
+            headButtTimer -= Time.fixedDeltaTime;
+        }
+        if (bodySlamTimer > 0)
+        {
+            bodySlamTimer -= Time.fixedDeltaTime;
+        }
+        if(isInBodySlam)
+        {
+            if(rb.velocity.y <0f)
+            {
+                print("sup");
+                isInBodySlam = false;
+            }
+        }
+
+        //if (!isLocalPlayer) {
+        //	return;
+        //}
 
 
-		if (!isLocalPlayer) {
-			return;
-		}
-
-
-		xPingPong = Mathf.Sin (Time.time * waveSpeed) * waveHeight;
+        xPingPong = Mathf.Sin (Time.time * waveSpeed) * waveHeight;
 
 
 		state = CheckState ();
@@ -102,6 +123,7 @@ public class NewCharacterBehaviour : NetworkBehaviour {
         }
         if (forward)
         {
+            
             transform.Translate(new Vector3(0f, xPingPong, -1f) * moveSpeed);
             //print (new Vector3 (0f, xPingPong, -1f) * moveSpeed);
         }
@@ -110,29 +132,38 @@ public class NewCharacterBehaviour : NetworkBehaviour {
             transform.Translate(new Vector3(0f, xPingPong, 1f) * moveSpeed);
             //print (new Vector3 (0f, xPingPong, 1f) * moveSpeed);
         }
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && headButtTimer <= 0f)
         {
             transform.Translate(new Vector3(0, 0, 3f));
+            headButtTimer = headButtCD;
+        }
+        if (Input.GetMouseButtonDown(1) && bodySlamTimer <= 0f)
+        {
+            //transform.Translate(new Vector3(0, 3f, 0f));
+            isInBodySlam = true;
+            rb.velocity += new Vector3(0, 300f, 0f);
+            rb.angularVelocity += new Vector3(0, 10, 0);
+            bodySlamTimer = bodySlamCD;
         }
 
         rb.position = transform.position;
         //rb.MovePosition (transform.position);
 		rb.MoveRotation (new Quaternion (0f, transform.rotation.y, transform.rotation.z, transform.rotation.w));
 	}
-
-<<<<<<< HEAD
+    
 
 	private void WaterMode () {
 
 
-		if (Input.GetAxis ("Horizontal") < 0) {
+		if (left) {
 			transform.Rotate (-Vector3.up * rotateSpeed);
-		} else if (Input.GetAxis ("Horizontal") > 0) {
+		} else if (right) {
 			transform.Rotate (Vector3.up * rotateSpeed);
-		} else if (Input.GetAxis ("Vertical") < 0) {
+		}
+        if (forward) {
 			transform.Translate (new Vector3 (0f, xPingPong, -1f) * moveSpeed);
 			print (new Vector3 (0f, xPingPong, -1f) * moveSpeed);
-		} else if (Input.GetAxis ("Vertical") > 0) {
+		} else if (back) {
 			transform.Translate (new Vector3 (0f, xPingPong, 1f) * moveSpeed);
 			print (new Vector3 (0f, xPingPong, 1f) * moveSpeed);
 		}
@@ -141,10 +172,9 @@ public class NewCharacterBehaviour : NetworkBehaviour {
 		rb.MovePosition (transform.position);
 		rb.MoveRotation (new Quaternion (0f, transform.rotation.y, transform.rotation.z, transform.rotation.w));
 	}
-=======
     private void FollowRB()
     {
-        Vector3 pos = Vector3.Lerp(transform.position, rb.position+new Vector3(0,2.5f,0), 0.1f);
+        Vector3 pos = Vector3.Lerp(transform.position, rb.position+new Vector3(0,2.5f,0), 0.01f);
         transform.position = pos;
     }
 
@@ -185,5 +215,4 @@ public class NewCharacterBehaviour : NetworkBehaviour {
             forward = false;
         }
     }
->>>>>>> cbdf4bcea5bab2ad452badf9395958bb2df4191b
 }
