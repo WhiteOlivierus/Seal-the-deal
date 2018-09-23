@@ -1,12 +1,14 @@
 ﻿using UnityEngine;
+using UnityEngine.Networking;
 
-public class NewCharacterBehaviour : MonoBehaviour {
+public class NewCharacterBehaviour : NetworkBehaviour {
 
 	public float moveSpeed;
 	public float rotateSpeed;
 	public int state = 0;
 	public float waveHeight, waveSpeed;
 	public Rigidbody rb;
+	public GameObject pc;
 
 
 	private Vector3 boneZone;
@@ -16,7 +18,6 @@ public class NewCharacterBehaviour : MonoBehaviour {
 	void Start () {
 
 
-		// rb = GetComponent<Rigidbody> ();
 		boneZone = GameObject.Find ("BoneZone").transform.position;
 
 
@@ -24,6 +25,13 @@ public class NewCharacterBehaviour : MonoBehaviour {
 
 
 	void FixedUpdate () {
+
+
+		if (!isLocalPlayer) {
+			return;
+		}
+
+
 		xPingPong = Mathf.Sin (Time.time * waveSpeed) * waveHeight;
 
 
@@ -35,8 +43,7 @@ public class NewCharacterBehaviour : MonoBehaviour {
 				LandMode ();
 				break;
 			case 1:
-				break;
-			case 2:
+				WaterMode ();
 				break;
 			default:
 				break;
@@ -68,6 +75,27 @@ public class NewCharacterBehaviour : MonoBehaviour {
 
 
 	private void LandMode () {
+
+
+		if (Input.GetAxis ("Horizontal") < 0) {
+			transform.Rotate (-Vector3.up * rotateSpeed);
+		} else if (Input.GetAxis ("Horizontal") > 0) {
+			transform.Rotate (Vector3.up * rotateSpeed);
+		} else if (Input.GetAxis ("Vertical") < 0) {
+			transform.Translate (new Vector3 (0f, xPingPong, -1f) * moveSpeed);
+			print (new Vector3 (0f, xPingPong, -1f) * moveSpeed);
+		} else if (Input.GetAxis ("Vertical") > 0) {
+			transform.Translate (new Vector3 (0f, xPingPong, 1f) * moveSpeed);
+			print (new Vector3 (0f, xPingPong, 1f) * moveSpeed);
+		}
+
+
+		rb.MovePosition (transform.position);
+		rb.MoveRotation (new Quaternion (0f, transform.rotation.y, transform.rotation.z, transform.rotation.w));
+	}
+
+
+	private void WaterMode () {
 
 
 		if (Input.GetAxis ("Horizontal") < 0) {
