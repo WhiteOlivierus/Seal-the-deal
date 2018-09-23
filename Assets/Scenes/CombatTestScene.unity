@@ -137,7 +137,7 @@ BoxCollider:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 37824635}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: c257a763444e3f346ae0651a8d6aa5c0, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -191,13 +191,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 37824635}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0.16894192, y: 0.01979749, z: 0.05772667, w: 0.98373485}
   m_LocalPosition: {x: -3.45, y: 0.95, z: 0.04}
-  m_LocalScale: {x: 2.5214, y: 2.5214, z: 2.5214}
+  m_LocalScale: {x: 8.190768, y: 8.190768, z: 31.066765}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -19.553001, y: 1.182, z: 6.5130005}
 --- !u!1 &689870622
 GameObject:
   m_ObjectHideFlags: 0
@@ -273,15 +273,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4963833601894922, guid: 5ab5bd8c912c6a840940a55c7f80f75c, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -3.388911
+      value: 9.8
       objectReference: {fileID: 0}
     - target: {fileID: 4963833601894922, guid: 5ab5bd8c912c6a840940a55c7f80f75c, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 5.66
+      value: 9.3
       objectReference: {fileID: 0}
     - target: {fileID: 4963833601894922, guid: 5ab5bd8c912c6a840940a55c7f80f75c, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -5.049884
+      value: -26.7
       objectReference: {fileID: 0}
     - target: {fileID: 4963833601894922, guid: 5ab5bd8c912c6a840940a55c7f80f75c, type: 2}
       propertyPath: m_LocalRotation.x
@@ -302,6 +302,11 @@ Prefab:
     - target: {fileID: 4963833601894922, guid: 5ab5bd8c912c6a840940a55c7f80f75c, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114762190308224324, guid: 5ab5bd8c912c6a840940a55c7f80f75c,
+        type: 2}
+      propertyPath: waveHeight
+      value: 2.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ab5bd8c912c6a840940a55c7f80f75c, type: 2}
