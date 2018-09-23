@@ -5,57 +5,60 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.Networking.Match;
 
-public class CustomNetworkManager : NetworkManager
-{
+public class CustomNetworkManager : NetworkManager {
 	private float nextRefreshTime;
 
-	public void StartHosting()
-	{
-		StartMatchMaker();
-		matchMaker.CreateMatch("Jasons Match", 4, true, "", "", "", 0, 0, OnMatchCreated);
+	public void StartHosting () {
+		StartMatchMaker ();
+		matchMaker.CreateMatch ("Jasons Match", 4, true, "", "", "", 0, 0, OnMatchCreated);
 	}
 
-	private void OnMatchCreated(bool success, string extendedinfo, MatchInfo responsedata)
-	{
-		base.StartHost(responsedata);
-		RefreshMatches();
+	private void OnMatchCreated (bool success, string extendedinfo, MatchInfo responsedata) {
+		base.StartHost (responsedata);
+		RefreshMatches ();
+		GameObject.Find ("ServerManager").SetActive (false);
 	}
 
-	private void Update()
-	{
-		if (Time.time >= nextRefreshTime)
-		{
-			RefreshMatches();
+	private void Update () {
+		if (Time.time >= nextRefreshTime) {
+			RefreshMatches ();
 		}
 	}
 
-	private void RefreshMatches()
-	{
+	private void RefreshMatches () {
 		nextRefreshTime = Time.time + 5f;
 
 		if (matchMaker == null)
-			StartMatchMaker();
+			StartMatchMaker ();
 
-		matchMaker.ListMatches(0, 10, "", true, 0, 0, HandleListMatchesComplete);
+		matchMaker.ListMatches (0, 10, "", true, 0, 0, HandleListMatchesComplete);
 	}
 
-	private void HandleListMatchesComplete(bool success, 
-		string extendedinfo, 
-		List<MatchInfoSnapshot> responsedata)
-	{
-		AvailableMatchesList.HandleNewMatchList(responsedata);
+	private void HandleListMatchesComplete (bool success,
+		string extendedinfo,
+		List<MatchInfoSnapshot> responsedata) {
+		AvailableMatchesList.HandleNewMatchList (responsedata);
 	}
 
-	public void JoinMatch(MatchInfoSnapshot match)
-	{
+	public void JoinMatch (MatchInfoSnapshot match) {
 		if (matchMaker == null)
-			StartMatchMaker();
+			StartMatchMaker ();
 
-		matchMaker.JoinMatch(match.networkId, "", "", "", 0, 0, HandleJoinedMatch);
+		matchMaker.JoinMatch (match.networkId, "", "", "", 0, 0, HandleJoinedMatch);
+		GameObject.Find ("ServerManager").SetActive (false);
 	}
 
-	private void HandleJoinedMatch(bool success, string extendedinfo, MatchInfo responsedata)
-	{
-		StartClient(responsedata);
+	private void HandleJoinedMatch (bool success, string extendedinfo, MatchInfo responsedata) {
+		StartClient (responsedata);
+	}
+
+
+	public void ExitOutOfHost () {
+		StopClient ();
+	}
+
+
+	public void StopTheHost (MatchInfoSnapshot match) {
+		StopHost ();
 	}
 }
