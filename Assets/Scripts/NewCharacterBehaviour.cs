@@ -13,6 +13,7 @@ public class NewCharacterBehaviour : NetworkBehaviour {
 
 	private Vector3 boneZone;
 	private float xPingPong = 0;
+	private CustomNetworkManager nm;
 
 
 	void Start () {
@@ -25,6 +26,15 @@ public class NewCharacterBehaviour : NetworkBehaviour {
 
 
 	void FixedUpdate () {
+
+
+		if (Input.GetKey ("Cancel")) {
+			if (!isServer) {
+				nm.StopClient ();
+			} else {
+				nm.StopHost ();
+			}
+		}
 
 
 		if (!isLocalPlayer) {
