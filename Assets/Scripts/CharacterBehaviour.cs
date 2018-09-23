@@ -15,18 +15,20 @@ public class CharacterBehaviour : MonoBehaviour {
 	public Rigidbody rbLeft;
 	public Rigidbody rbRight;
 	public ForceMode fm;
+	public int state = 0;
 
 
 	private Rigidbody rb;
 	private Vector3 rotation;
-	private int state = 0;
 	private int chargeBodySlam = 0;
+	private Vector3 boneZone;
 
 
 	void Start () {
 
 
 		rb = GetComponent<Rigidbody> ();
+		boneZone = GameObject.Find ("BoneZone").transform.position;
 
 
 	}
@@ -49,6 +51,12 @@ public class CharacterBehaviour : MonoBehaviour {
 				WaterMode ();
 				rb.velocity = Vector3.ClampMagnitude (rb.velocity, maxVelocityWater);
 				break;
+			case 2:
+				LandMode ();
+				rb.velocity = Vector3.ClampMagnitude (rb.velocity, maxVelocityLand);
+				rbLeft.velocity = Vector3.ClampMagnitude (rbLeft.velocity, turnForceLand);
+				rbRight.velocity = Vector3.ClampMagnitude (rbRight.velocity, turnForceLand);
+				break;
 			default:
 				break;
 		}
@@ -62,7 +70,7 @@ public class CharacterBehaviour : MonoBehaviour {
 		rbRight.maxAngularVelocity = turnForceLand;
 
 
-		print (rb.velocity.magnitude);
+		// print (rb.velocity.magnitude);
 
 
 	}
@@ -70,18 +78,21 @@ public class CharacterBehaviour : MonoBehaviour {
 
 	private int CheckState () {
 
+		if (Vector3.Distance (transform.position, boneZone) <= 10f) {
+			return 2;
+		} else {
+			RaycastHit hit;
+			if (Physics.Raycast (transform.position, -Vector3.up, out hit, Mathf.Infinity, 1 << 8)) {
 
-		RaycastHit hit;
-		if (Physics.Raycast (transform.position, -Vector3.up, out hit, Mathf.Infinity, 1 << 8)) {
+
+				print (hit.collider.name);
 
 
-			print (hit.collider.name);
-
-
-			if (hit.collider.gameObject.name == "floor") {
-				return 0;
-			} else {
-				return 1;
+				if (hit.collider.gameObject.name == "floor") {
+					return 0;
+				} else {
+					return 1;
+				}
 			}
 		}
 

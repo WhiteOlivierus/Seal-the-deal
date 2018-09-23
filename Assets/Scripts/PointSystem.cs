@@ -1,118 +1,84 @@
-﻿using UnityEngine;
-using System.Collections;
-using UnityEngine.UI;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-public class PointSystem : MonoBehaviour
-{
+public class PointSystem : MonoBehaviour {
     //Beweeg naar het object toe voor meer punten ga terug voor weer minder punten 
 
-    public bool onLand = true;
-    public bool boneZone = false;
-    public bool inWater = false; 
 
-    public int pointCounter = 0;
-    public int pointAdder= 1;
+    [SerializeField]
+    private int pointCounter = 0;
+    public int pointAdder = 1;
     public int zoneBonus = 2;
-    public int pointMax = 100; 
-
-    public float playerDistance;
-    public float bonezoneBorder;
-    public float landBorder; 
-    public float waterDistance;
-
-    public Transform BoneZone;
-    //public Transform LandZone;
-    public Transform playerPos;
-    public Transform waterZone;
-
+    public int pointMax = 100;
     public Image currentPoints;
+    public Color overTimeColor;
 
-    public Color overTimeColor; 
+    private NewCharacterBehaviour player;
+    private bool onLand = true;
+    private bool boneZone = false;
+    private bool inWater = false;
 
-    public Text pointText;
 
-
-    void Start()
-    {
-        StartCoroutine("NormalePointTime");
+    void Start () {
+        StartCoroutine ("PointTimer");
+        player = GetComponent<NewCharacterBehaviour> ();
     }
 
 
-    void FixedUpdate()
-    {
-        playerDistance = Vector3.Distance(BoneZone.position, transform.position);
-        waterDistance = Vector3.Distance(waterZone.position, transform.position); 
-
-        //playerDistance = Vector3.Distance(playerPos.position, transform.position);
-        //bonezoneBorder = Vector3.Distance(playerPos.position, transform.position);
-        //landBorder = Vector3.Distance(playerPos.position, transform.position);
-        pointText.text = ("" + pointCounter);
-
-        //checks zone 
-
-        if ( waterDistance <= 5) // in water
+    void FixedUpdate () {
+        if (player.state == 1) // in water
         {
             inWater = true;
             onLand = false;
             boneZone = false;
-        }
-
-        else
-        {
-            inWater = false; 
+        } else {
+            inWater = false;
         }
 
         if (inWater != true) //not in water
         {
-            if (playerDistance > bonezoneBorder) //on land
+            if (player.state == 0) //on land
             {
                 boneZone = false;
                 onLand = true;
             }
 
 
-            if (playerDistance < bonezoneBorder) //in red zone
+            if (player.state == 2) //in red zone
             {
                 boneZone = true;
                 onLand = false;
             }
-        }   
+        }
 
-        if (pointCounter >= pointMax)
-        {
+        if (pointCounter >= pointMax) {
             pointCounter = pointMax;
-            currentPoints.color = overTimeColor; 
-            StopCoroutine("NormalePointTime");
+            currentPoints.color = overTimeColor;
+            StopCoroutine ("PointTimer");
         }
     }
 
 
-    IEnumerator NormalePointTime()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(1);
+    IEnumerator PointTimer () {
+        while (true) {
+            yield return new WaitForSeconds (1);
 
-            if (onLand == true)
-            {
+            if (onLand == true) {
                 pointCounter += pointAdder;
-                UpdatePointTotal();
+                UpdatePointTotal ();
             }
 
             // add red zone bonus 
-            if (boneZone == true)
-            {
+            if (boneZone == true) {
                 pointCounter += pointAdder + zoneBonus;
-                UpdatePointTotal();
+                UpdatePointTotal ();
             }
         }
     }
 
-    private void UpdatePointTotal()
-    {
-        currentPoints.fillAmount  = (float)pointCounter / (float)pointMax; 
+    private void UpdatePointTotal () {
+        currentPoints.fillAmount = (float) pointCounter / (float) pointMax;
     }
 }
-
-
