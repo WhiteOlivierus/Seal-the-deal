@@ -147,7 +147,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1219128808746536
 GameObject:
   m_ObjectHideFlags: 1
@@ -907,7 +907,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1818524331602192}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.388911, y: 9.6, z: -5.049884}
+  m_LocalPosition: {x: -3.388911, y: 5.66, z: -5.049884}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 224901524444868768}
@@ -1509,7 +1509,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.00000023837069, y: 2.2399988, z: -0.0026807785}
+  m_ConnectedAnchor: {x: -0.00000023837069, y: 2.2399988, z: -0.00268054}
   m_UseSpring: 0
   m_Spring:
     spring: 0
@@ -1645,7 +1645,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.0000002384222, y: 1.3000041, z: 0.0025449991}
+  m_ConnectedAnchor: {x: -0.0000002384222, y: 1.3000041, z: 0.0025445223}
   m_UseSpring: 0
   m_Spring:
     spring: 0
@@ -1679,7 +1679,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.00000023840327, y: 1.2999996, z: -0.0015559196}
+  m_ConnectedAnchor: {x: -0.00000023840327, y: 1.2999996, z: -0.0015554428}
   m_UseSpring: 0
   m_Spring:
     spring: 0
@@ -1820,6 +1820,9 @@ MonoBehaviour:
   waveHeight: 1
   waveSpeed: 10
   rb: {fileID: 54324970290335272}
+  pc: {fileID: 0}
+  headButtCD: 1
+  bodySlamCD: 5
 --- !u!114 &114895475367793806
 MonoBehaviour:
   m_ObjectHideFlags: 1
