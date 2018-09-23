@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4876428174295648}
   - component: {fileID: 95484727105124084}
   - component: {fileID: 114507066409412628}
+  - component: {fileID: 64227251300136956}
   m_Layer: 0
   m_Name: SealSpawnPrefab
   m_TagString: Untagged
@@ -529,6 +530,20 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300008, guid: 2eab5f21183e1de47b47f88af83931ef, type: 3}
+--- !u!64 &64227251300136956
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000621109053086}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 0}
 --- !u!64 &64647699771501004
 MeshCollider:
   m_ObjectHideFlags: 1
