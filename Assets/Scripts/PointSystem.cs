@@ -4,8 +4,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PointSystem : MonoBehaviour {
-    //Beweeg naar het object toe voor meer punten ga terug voor weer minder punten 
-
+    //Checks which zone the player is in and add points with that info
 
     [SerializeField]
     private int pointCounter = 0;
@@ -13,12 +12,17 @@ public class PointSystem : MonoBehaviour {
     public int zoneBonus = 2;
     public int pointMax = 100;
     public Image currentPoints;
-    public Color overTimeColor;
 
-    private NewCharacterBehaviour player;
+    public Color waterColor;
+    public Color landColor;
+    public Color bonezoneColor; 
+    public Color overTimeColor;
+    
     private bool onLand = true;
     private bool boneZone = false;
     private bool inWater = false;
+
+    private NewCharacterBehaviour player;
 
 
     void Start () {
@@ -33,7 +37,10 @@ public class PointSystem : MonoBehaviour {
             inWater = true;
             onLand = false;
             boneZone = false;
-        } else {
+            currentPoints.color = waterColor;
+        }
+        else
+        {
             inWater = false;
         }
 
@@ -43,13 +50,15 @@ public class PointSystem : MonoBehaviour {
             {
                 boneZone = false;
                 onLand = true;
+                currentPoints.color = landColor;
             }
 
 
-            if (player.state == 2) //in red zone
+            if (player.state == 2) //in boneZone
             {
                 boneZone = true;
                 onLand = false;
+                currentPoints.color = bonezoneColor;
             }
         }
 
