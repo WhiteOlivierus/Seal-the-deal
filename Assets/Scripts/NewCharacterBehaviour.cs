@@ -8,8 +8,9 @@ public class NewCharacterBehaviour : MonoBehaviour {
 	public float rotateSpeed;
 	public int state = 0;
 	public float waveHeight, waveSpeed;
-	public Rigidbody rb;
-	public GameObject pc;
+    public Rigidbody rb;
+    public Rigidbody rb2;
+    public GameObject pc;
     public float headButtCD = 1f;
     public float bodySlamCD = 5f;
 
@@ -174,8 +175,12 @@ public class NewCharacterBehaviour : MonoBehaviour {
 	}
     private void FollowRB()
     {
-        Vector3 pos = Vector3.Lerp(transform.position, rb.position+new Vector3(0,2.5f,0), 0.01f);
+        Vector3 pos = Vector3.Lerp(transform.position, rb2.position+new Vector3(0,5f,2f), 0.01f);
         transform.position = pos;
+        //if(Vector3.Distance(transform.position, rb2.position) > 8)
+        //{
+        //    transform.position = Vector3.Lerp(transform.position, rb2.position + new Vector3(0, 5f, 0f), 1f);
+        //}
     }
 
     private bool forward = false;
