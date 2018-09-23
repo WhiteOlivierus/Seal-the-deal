@@ -9,7 +9,7 @@
 	}
 		SubShader
 	{
-		Blend SrcAlpha OneMinusSrcAlpha
+		Blend SrcAlpha One//SrcAlpha OneMinusSrcAlpha
 		ZWrite Off
 		Cull Off
 
