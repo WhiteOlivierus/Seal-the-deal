@@ -35,3 +35,5 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+Assets/Prefabs/Particles/Stun Animation seagulls.prefab
+Assets/Scenes/BlockOut 2.unity
