@@ -7,9 +7,17 @@ public class NewCharacterBehaviour : NetworkBehaviour {
 	public float rotateSpeed;
 	public int state = 0;
 	public float waveHeight, waveSpeed;
+<<<<<<< HEAD
+    public Rigidbody rb;
+    public Rigidbody rb2;
+    public GameObject pc;
+    public float headButtCD = 1f;
+    public float bodySlamCD = 5f;
+=======
 	public Rigidbody rb;
 	public GameObject pc;
 
+>>>>>>> 69d7cde1fb20b3440dce1956c48d9fdaeb0d45ca
 
 	private Vector3 boneZone;
 	private float xPingPong = 0;
@@ -175,4 +183,54 @@ public class NewCharacterBehaviour : NetworkBehaviour {
 			forward = false;
 		}
 	}
+<<<<<<< HEAD
+    private void FollowRB()
+    {
+        Vector3 pos = Vector3.Lerp(transform.position, rb2.position+new Vector3(0,5f,2f), 0.01f);
+        transform.position = pos;
+        //if(Vector3.Distance(transform.position, rb2.position) > 8)
+        //{
+        //    transform.position = Vector3.Lerp(transform.position, rb2.position + new Vector3(0, 5f, 0f), 1f);
+        //}
+    }
+
+    private bool forward = false;
+    private bool back = false;
+    private bool left = false;
+    private bool right = false;
+    private void GetInput()
+    {
+        if (Input.GetAxis("Horizontal") < 0)
+        {
+            left = true;
+            right = false;
+        }
+        else if (Input.GetAxis("Horizontal") > 0)
+        {
+            right = true;
+            left = false;
+        }
+        else if(Input.GetAxis("Horizontal") == 0)
+        {
+            right = false;
+            left = false;
+        }
+        if (Input.GetAxis("Vertical") < 0)
+        {
+            forward = true;
+            back = false;
+        }
+        else if (Input.GetAxis("Vertical") > 0)
+        {
+            back = true;
+            forward = false;
+        }
+        else if (Input.GetAxis("Vertical") == 0)
+        {
+            back = false;
+            forward = false;
+        }
+    }
+=======
+>>>>>>> 69d7cde1fb20b3440dce1956c48d9fdaeb0d45ca
 }

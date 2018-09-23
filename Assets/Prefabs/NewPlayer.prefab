@@ -654,8 +654,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1537339429532324}
   m_LocalRotation: {x: 0.000030741092, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.47, y: -2.11, z: 0}
-  m_LocalScale: {x: 4.1116, y: 3.2253, z: 7.6211}
+  m_LocalPosition: {x: -0.47, y: -1.73, z: -0}
+  m_LocalScale: {x: 4.8685455, y: 3.819078, z: 9.024145}
   m_Children: []
   m_Father: {fileID: 4963833601894922}
   m_RootOrder: 2
@@ -907,8 +907,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1818524331602192}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.388911, y: 5.66, z: -5.049884}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalPosition: {x: -3.388911, y: 13.9, z: -23.3}
+  m_LocalScale: {x: 1.15, y: 1.15, z: 1.15}
   m_Children:
   - {fileID: 224901524444868768}
   - {fileID: 4557604792267210}
@@ -1167,7 +1167,7 @@ MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1537339429532324}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1509,7 +1509,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.00000023837069, y: 2.2399988, z: -0.00268054}
+  m_ConnectedAnchor: {x: -0.00000008935907, y: 2.2399979, z: -0.00268054}
   m_UseSpring: 0
   m_Spring:
     spring: 0
@@ -1543,7 +1543,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -1.3999999, y: 0.000004667323, z: 0.0040997243}
+  m_ConnectedAnchor: {x: -1.3999997, y: 0.0000057406723, z: 0.0041002}
   m_UseSpring: 0
   m_Spring:
     spring: 0
@@ -1577,7 +1577,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.00000023844112, y: 1.2000005, z: 0.00000035762787}
+  m_ConnectedAnchor: {x: -0.00000008942949, y: 1.200001, z: -0.00000059604645}
   m_UseSpring: 0
   m_Spring:
     spring: 0
@@ -1611,7 +1611,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 1.3999999, y: -0.00000011935185, z: -0.000000119066556}
+  m_ConnectedAnchor: {x: 1.4, y: -0.0000004764089, z: 0.00000035819824}
   m_UseSpring: 0
   m_Spring:
     spring: 0
@@ -1645,7 +1645,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.0000002384222, y: 1.3000041, z: 0.0025445223}
+  m_ConnectedAnchor: {x: -0.000000089410584, y: 1.300004, z: 0.0025449991}
   m_UseSpring: 0
   m_Spring:
     spring: 0
@@ -1679,7 +1679,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.00000023840327, y: 1.2999996, z: -0.0015554428}
+  m_ConnectedAnchor: {x: -0.00000008939167, y: 1.2999982, z: -0.0015554428}
   m_UseSpring: 0
   m_Spring:
     spring: 0
@@ -1760,8 +1760,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 4673853250799796}
-  distance: 3
-  height: 3
+  distance: 8
+  height: 6
   heightDamping: 1
   rotationDamping: 1
 --- !u!114 &114359725482498950
@@ -1814,10 +1814,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb2203640cde0824c9b08c87af9b9b55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0.1
+  moveSpeed: 0.15
   rotateSpeed: 1
   state: 0
-  waveHeight: 1
+  waveHeight: 3
   waveSpeed: 10
   rb: {fileID: 54324970290335272}
   pc: {fileID: 0}
@@ -2088,7 +2088,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.00000023844112, y: -1.2341, z: 0.00000011920929}
+  m_ConnectedAnchor: {x: -0.0000000894295, y: -1.2340995, z: 0.00000047683716}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 1, z: 0}
   m_TwistLimitSpring:
