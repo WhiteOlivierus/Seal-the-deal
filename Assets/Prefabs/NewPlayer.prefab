@@ -395,6 +395,7 @@ GameObject:
   - component: {fileID: 20278637554293570}
   - component: {fileID: 81820259599065976}
   - component: {fileID: 114315522618916840}
+  - component: {fileID: 114697698744637114}
   m_Layer: 0
   m_Name: MainCamera
   m_TagString: MainCamera
@@ -786,13 +787,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1616352939539430}
-  m_LocalRotation: {x: 0.34017268, y: 0.00008382604, z: -0.000024811106, w: 0.940363}
-  m_LocalPosition: {x: -0.04176882, y: 4.5838127, z: -5.80163}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4963833601894922}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 39.775, y: 0.010000001, z: 0.001}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4654883188443194
 Transform:
   m_ObjectHideFlags: 1
@@ -906,7 +907,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1818524331602192}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.429533, y: 5.32, z: -4.01}
+  m_LocalPosition: {x: -3.388911, y: 9.6, z: -5.049884}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 224901524444868768}
@@ -1166,7 +1167,7 @@ MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1537339429532324}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1508,7 +1509,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 4.789712e-11, y: 2.2399988, z: -0.00268054}
+  m_ConnectedAnchor: {x: -0.00000023837069, y: 2.2399988, z: -0.0026807785}
   m_UseSpring: 0
   m_Spring:
     spring: 0
@@ -1576,7 +1577,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -2.252545e-11, y: 1.2000005, z: -0.00000011920929}
+  m_ConnectedAnchor: {x: -0.00000023844112, y: 1.2000005, z: 0.00000035762787}
   m_UseSpring: 0
   m_Spring:
     spring: 0
@@ -1610,7 +1611,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 1.4, y: -0.00000011935185, z: -0.000000119066556}
+  m_ConnectedAnchor: {x: 1.3999999, y: -0.00000011935185, z: -0.000000119066556}
   m_UseSpring: 0
   m_Spring:
     spring: 0
@@ -1644,7 +1645,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -3.6166632e-12, y: 1.3000041, z: 0.0025445223}
+  m_ConnectedAnchor: {x: -0.0000002384222, y: 1.3000041, z: 0.0025449991}
   m_UseSpring: 0
   m_Spring:
     spring: 0
@@ -1678,7 +1679,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 1.5300832e-11, y: 1.2999996, z: -0.0015554428}
+  m_ConnectedAnchor: {x: -0.00000023840327, y: 1.2999996, z: -0.0015559196}
   m_UseSpring: 0
   m_Spring:
     spring: 0
@@ -1743,6 +1744,9 @@ MonoBehaviour:
   zoneBonus: 2
   pointMax: 100
   currentPoints: {fileID: 114913579226531300}
+  waterColor: {r: 0, g: 0, b: 0, a: 0}
+  landColor: {r: 0, g: 0, b: 0, a: 0}
+  bonezoneColor: {r: 0, g: 0, b: 0, a: 0}
   overTimeColor: {r: 0.9433962, g: 0.11124954, b: 0.3440746, a: 0.92941177}
 --- !u!114 &114315522618916840
 MonoBehaviour:
@@ -1756,10 +1760,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 4673853250799796}
-  distance: 5
-  height: 5
-  heightDamping: 5
-  rotationDamping: 10
+  distance: 3
+  height: 3
+  heightDamping: 1
+  rotationDamping: 1
 --- !u!114 &114359725482498950
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1787,6 +1791,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114697698744637114
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1616352939539430}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2388215b643934941847d22d80c65309, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
 --- !u!114 &114762190308224324
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2069,7 +2085,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -2.253417e-11, y: -1.2341, z: 0.00000011920929}
+  m_ConnectedAnchor: {x: -0.00000023844112, y: -1.2341, z: 0.00000011920929}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 1, z: 0}
   m_TwistLimitSpring:
